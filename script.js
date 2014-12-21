@@ -83,9 +83,9 @@ function init() {
 
 function afficheContacts() {
     for(var i = 0; i < contacts.length; i++) {
-    console.log("Informations du contact : " +contacts[i].civilite + contacts[i].nom + contacts[i].prenom + contacts[i].poste + " chez " + contacts[i].compagnie + " au " + contacts[i].telephone + "ou à " + contacts[i].email);
+    console.log("Informations du contact : " +contacts[i].civilite + contacts[i].nom + contacts[i].prenom + contacts[i].poste + " chez " + contacts[i].compagnie + " joignable au " + contacts[i].telephone + "ou à " + contacts[i].email);
     
-      ajouteLigneAuTableau(contacts[i].civilite, contacts[i].nom, clients[i].prenom, contacts[i].poste, contacts[i].compagnie, contacts[i].telephone, contacts[i].email );
+      ajouteLigneAuTableau(contacts[i].civilite, contacts[i].nom, contacts[i].prenom, contacts[i].poste, contacts[i].compagnie, contacts[i].telephone, contacts[i].email );
 
   }
 }
