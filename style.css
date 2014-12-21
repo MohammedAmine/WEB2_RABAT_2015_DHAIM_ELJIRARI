@@ -1,0 +1,66 @@
+input
+{
+margin:2px;
+border-radius: 4px 4px 4px 4px;
+-moz-border-radius: 4px 4px 4px 4px;
+-webkit-border-radius: 4px 4px 4px 4px;
+border: 2px solid #000000;
+height :20px;
+}
+
+td
+{
+ border: 0px solid #000000;
+  padding:0px;
+  margin:0px;
+  width="50%"
+}
+
+button
+{
+ height :25px; 
+ border-radius: 3px 3px 3px 3px;
+}
+
+#conteneurForm{
+  border: 1px solid #000000;
+  border-radius: 4px 4px 4px 4px;
+   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#conteneurTableau
+{
+ border: 1px solid #000000;
+  border-radius: 4px 4px 4px 4px;
+   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table
+{
+  width: 100%;
+}
+
+button
+{
+  margin-left:0px;
+}
+
+.couleur1
+{
+  background-color: #F5F5F5;
+}
+
+.couleur2
+{
+  background-color: #E6E6FA;
+}
+
+
+input
+{
+ width: 200px;
+}
