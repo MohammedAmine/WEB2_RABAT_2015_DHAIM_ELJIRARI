@@ -16,7 +16,7 @@ function enregisterModifications() {
   console.log("valeur du poste : " + champNom.value);
   
   var contact = {};
-  
+    
   contact.civilite=champCivilite.value
   contact.nom = champNom.value;
   contact.prenom=champPrenom.value
@@ -34,6 +34,8 @@ function enregisterModifications() {
   champPoste.value="";
   
   // On rajoute le contact dans le tableau des contacts
+  // ????
+  contacts = JSON.parse(localStorage.contacts);
   contacts.push(contact);
   
   // On sauvegarde au format JSON
@@ -61,13 +63,13 @@ function init() {
   
   //fin test
 
-  champCivilite = document.getElementById("civilite");
-  champNom = document.getElementById("nom");
-  champPrenom = document.querySelector("prenom");
-  champEmail=document.querySelector("email");
-  champTelephone=document.querySelector("telephone");
-  champCompagnie=document.querySelector("compagnie");
-  champPoste=document.querySelector("poste");
+  champCivilite = document.querySelector("#civilite");
+  champNom = document.querySelector("#nom");
+  champPrenom = document.querySelector("#prenom");
+  champEmail=document.querySelector("#email");
+  champTelephone=document.querySelector("#telephone");
+  champCompagnie=document.querySelector("#compagnie");
+  champPoste=document.querySelector("#poste");
   
   console.log("On regarde s'il y'a des contacts dans le localStorage");
   if(localStorage.contacts) {
