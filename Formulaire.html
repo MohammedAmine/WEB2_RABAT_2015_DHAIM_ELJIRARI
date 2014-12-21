@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css"> 
   <script src="script.js"></script> 
 </head>
-<body onload="getData()">
+<body onload="init();">
   
   <div id="conteneurForm">
  
@@ -72,9 +72,9 @@
      <table>
     <tr>
     <td colspan="2">
-    <button onclick="();">Ajouter</button>
-    <button onclick="getData();">Enregistrer</button>
-    <button onclick="();">Supprimer</button>
+    <button onclick="();">Ajouter un nouveau contact</button>
+    <button onclick="enregisterModifications();">Enregistrer les modifications</button>
+    <button onclick="effacerTout()();">Effacer Tous les contacts</button>
     <button onclick="();">Afficher</button>
       <!--input type="submit" value="Subscribe" name="jetpack_subscriptions_widget"-->
       </tr>
@@ -93,7 +93,7 @@
       
       
       <div id="conteneurTableau">
-        <table id:"Tableau">
+        <table id="Tableau">
   <thead>
   <tr>
      <th>Civilite</th>
@@ -106,7 +106,7 @@
   </tr>    
   </thead>
           
-        <tbody>
+        <tbody id="LeTbody">
          <tr class="couleur2"><td>Civilite</td>
            <td>nom</td>
            <td>Prenom</td>
