@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+  <title>Annuaire</title>
+  
+	<style>
+	 input:focus:invalid { 
+		background-color: #FFB6C1; /* light pink */
+		border-radius:4px 4px 4px 4px;
+		font-size: 20px;
+		}
+	 input:valid { 
+		background-color: #90EE90; /* light green */
+		border-radius:4px 4px 4px 4px;
+		font-size: 20px;
+		}
+	 input:required {
+		 border: 2px solid #000000; /* red */
+		 border-radius:4px 4px 4px 4px;
+		 font-size: 20px;
+		 }
+	 input:optional {
+		 border: 2px solid #008000; /* green */
+		 border-radius:4px 4px 4px 4px;
+		 font-size: 20px;
+			}
+	 select {
+	 border-radius:4px 4px 4px 4px;
+	 font-size: 20px;
+	 }
+	 
+	 legend{
+	 font-size: 30px;
+	 }
+	 
+	 label{font-size: 20px;}
+	 
+	 table {
+    width: 100%;
+}
+
+th {
+     font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #A7C942;
+    color: #ffffff;
+} 
+
+td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+table, th, td {
+   	 font-size: 1em;
+    border: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+} 
+	 
+	</style>
+
+</head>
+
+<body>
+
+	<header>
+    	<h1>Annuaire de contacts</h1>
+    </header>
+	
+	<table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+		<tr>
+		<td>
+		Amine
+		</td>
+		</tr>
+        <th>Prenom</th>
+		<th>Email</th>
+        <th>Telephone</th>
+		<th>Compagnie</th>
+        <th>Poste</th>
+      </tr>
+    </thead>
+    <tbody id="myTbody">
+    </tbody>
+  </table>
+	
+	<section>
+		<article>
+			<form enctype="text/plain" method="post" action="" class="form" name="formulaire">
+				<fieldset>
+					<legend>Informations personnelles</legend>
+					
+					<tr>
+						<td>
+							 <select>
+								  <option value="Mr">Mr</option>
+								  <option value="Mlle">Mlle</option>
+								  <option value="Mme">Mme</option>
+								  <option value="Dr">Dr</option>
+							</select> 
+						</td>					
+					
+						<td>
+							<label for="nom">Nom</label>
+							<input type="text" name="nom" id="nom" required placeholder="Michel" onchange="" />
+							
+						</td>
+						
+						<td>
+							<label for="prenom">Prenom</label>
+							<input type="text" name="prenom" id="prenom" required placeholder="Buffa" onchange="" />
+							
+						</td>
+						
+					</tr>
+					
+						
+				</fieldset>
+				
+				<fieldset>
+					<legend>Contacts</legend>
+					
+					<tr>
+					
+						<td>
+						
+						</td>
+						
+						
+						<td>
+							<label for="email">Email</label>
+							<input type="email" name="email" id="email" required placeholder="michel.buffa@buffalo.com" onchange="" />
+							
+						</td>
+							
+						
+						<td>
+							<label for="telephone">Telephone</label>
+							<input type="tel"  placeholder="xxx-xxx-xxxx" pattern="^\(?\d{3}\)?[-\s]\d{3}[-\s]\d{4}.*?$" name="telephone" id="telephone" onchange="" />
+                    
+						</td>
+						
+					</tr>
+						
+				</fieldset>
+				
+				<fieldset>
+					<legend>Informations professionnelles</legend>
+					
+						<tr>
+					
+							<td>
+							
+							</td>
+							
+							
+							<td>
+								<label for="compagnie">Compagnie</label>
+								<input type="text" name="compagnie" id="compagnie" required placeholder="Buffalo" onchange="" />
+								
+							</td>
+								
+							
+							<td>
+								<label for="poste">Poste</label>
+								<input type="text"  placeholder="Directeur général" name="poste" id="poste" onchange="" />
+								
+							</td>
+						
+						</tr>
+				</fieldset>
+				
+			</form>
+			
+		</article>
+						            
+    </section>
+	
+</body>
