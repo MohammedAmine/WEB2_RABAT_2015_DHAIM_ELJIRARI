@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css"> 
   <script src="script.js"></script> 
 </head>
-<body>
+<body onload="getData()">
   
   <div id="conteneurForm">
  
@@ -17,7 +17,7 @@
      <table>
     <tr class="couleur2"><td width="50%">Civilite : </td>
       <td width="50%">
-        <select class="select">
+        <select class="select" id="select">
         <option>Mr</option>
         <option>Mme</option>
         <option>Mlle</option>
@@ -26,9 +26,9 @@
       </td>
       </tr>
   
-    <tr class="couleur1"><td width="50%">Nom : </td><td width="50%"><input type="text" placeholder="Nom" required/></td></tr>
+    <tr class="couleur1"><td width="50%">Nom : </td><td width="50%"><input type="text" placeholder="Nom" id="nom" required/></td></tr>
       
-    <tr class="couleur2"><td width="50%">Prenom : </td><td width="50%"><input type="text" placeholder="Prenom" required/></td></tr>
+    <tr class="couleur2"><td width="50%">Prenom : </td><td width="50%"><input type="text" placeholder="Prenom" id="prenom" required/></td></tr>
  </table>
      </form>
   </fieldset>
@@ -37,17 +37,16 @@
   <fieldset>
      <legend>Contact :</legend>
      <table>
-    <tr class="couleur1"><td width="50%">E-mail : </td><td width="50%"><input type="email" placeholder="Example@example.com" required/></td</tr>
+    <tr class="couleur1"><td width="50%">E-mail : </td><td width="50%"><input type="email" placeholder="Example@example.com" id="email" required/></td</tr>
         
-    <tr class="couleur2"><td width="50%">Telephone : </td><td width="50%"><input type="text" placeholder="Telephone" required/></td></tr>
+    <tr class="couleur2"><td width="50%">Telephone : </td><td width="50%"><input type="text" placeholder="Telephone" id="telephone"required/></td></tr>
 
       </table>
     </fieldset>
  </form>
  
     
-     
-      
+       
       
       
       
@@ -56,9 +55,9 @@
      <legend>informations professionnelles :</legend>
      <table>
        
-    <tr class="couleur1"><td width="50%">Compagnie : </td><td width="50%"><input type="text" placeholder="Compagnie" required/></td></tr>
+    <tr class="couleur1"><td width="50%">Compagnie : </td><td width="50%"><input type="text" placeholder="Compagnie" id="compagnie" required/></td></tr>
      
-    <tr class="couleur2"><td width="50%">Poste : </td><td width="50%"><input type="text" placeholder="Poste" required/><td><tr>
+    <tr class="couleur2"><td width="50%">Poste : </td><td width="50%"><input type="text" placeholder="Poste" id="poste" required/><td><tr>
               </table>
     </fieldset>
  </form>
@@ -74,7 +73,7 @@
     <tr>
     <td colspan="2">
     <button onclick="();">Ajouter</button>
-    <button onclick="();">Enregistrer</button>
+    <button onclick="getData();">Enregistrer</button>
     <button onclick="();">Supprimer</button>
     <button onclick="();">Afficher</button>
       <!--input type="submit" value="Subscribe" name="jetpack_subscriptions_widget"-->
