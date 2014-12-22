@@ -4,6 +4,13 @@ var champCivilite,champNom, champPrenom,champEmail,champTelephone,champCompagnie
 var contacts = [];
 
 
+
+
+
+
+
+
+
 function enregisterModifications() {
 
   console.log("sauvegarde du formulaire");
@@ -43,6 +50,15 @@ function enregisterModifications() {
   ajouteLigneAuTableau(contact.civilite, contact.nom, contact.prenom,contact.email,contact.telephone, contact.compagnie, contact.poste);
     }
 	
+
+
+
+
+
+
+
+
+
 function init() {
 
 //test
@@ -83,6 +99,13 @@ function init() {
 
 }
 
+
+
+
+
+
+
+
 function afficheContacts() {
     for(var i = 0; i < contacts.length; i++) {
     console.log("Informations du contact : " +contacts[i].civilite + contacts[i].nom + contacts[i].prenom + contacts[i].poste + " chez " + contacts[i].compagnie + " joignable au " + contacts[i].telephone + "ou à " + contacts[i].email);
@@ -91,6 +114,12 @@ function afficheContacts() {
 
   }
 }
+
+
+
+
+
+
 
 function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,email) {
       // on cree une ligne
@@ -131,6 +160,14 @@ function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,emai
     // on ajoute la ligne au tbody
        document.querySelector("#LeTbody").appendChild(ligne);
 }
+
+
+
+
+
+
+
+
 
 function effacerTout() {
   localStorage.clear();

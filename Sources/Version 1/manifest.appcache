@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+CACHE:
+
+#pages
+Formulaire.html
+
+
+#CSS
+/style.css
+
+#scripts
+/script.js
+
+
+FALLBACK:
+
+
+NETWORK:
