@@ -7,8 +7,33 @@
   <link rel="stylesheet" href="style.css"> 
   <script src="script.js"></script> 
 </head>
+
 <body onload="init();">
-  
+
+<!--test de l'etat de la connexion-->
+<article>
+  <p>Etat: <span id="status">checking...</span></p>
+</article>
+<script>
+var statusElem  = document.getElementById('status');
+    state= document.getElementById('state');
+
+function online(event) {
+  statusElem.className = navigator.onLine ? 'online' : 'offline';
+  statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
+  state.innerHTML += '<li>New event: ' + event.type + '</li>';
+}
+
+window.addEventListener('online', online);
+window.addEventListener('offline', online);
+// just to call the online function so that it refreshed display
+online();
+</script>
+
+
+
+<h1>Gestion des contacts</h1>
+<div id="page">
   <div id="conteneurForm">
  
   <form>
@@ -26,9 +51,9 @@
       </td>
       </tr>
   
-    <tr class="couleur1"><td width="50%">Nom : </td><td width="50%"><input type="text" placeholder="Nom" id="nom" required/></td></tr>
+    <tr class="couleur1"><td >Nom : </td><td><input type="text" placeholder="Nom" id="nom" required/></td></tr>
       
-    <tr class="couleur2"><td width="50%">Prenom : </td><td width="50%"><input type="text" placeholder="Prenom" id="prenom" required/></td></tr>
+    <tr class="couleur2"><td >Prenom : </td><td><input type="text" placeholder="Prenom" id="prenom" required/></td></tr>
  </table>
      </form>
   </fieldset>
@@ -37,63 +62,46 @@
   <fieldset>
      <legend>Contact :</legend>
      <table>
-    <tr class="couleur1"><td width="50%">E-mail : </td><td width="50%"><input type="email" placeholder="Example@example.com" id="email" required/></td</tr>
+    <tr class="couleur1"><td>E-mail : </td><td><input type="email" placeholder="Example@example.com" id="email" required/></td</tr>
         
-    <tr class="couleur2"><td width="50%">Telephone : </td><td width="50%"><input type="text" placeholder="Telephone" id="telephone"required/></td></tr>
+    <tr class="couleur2"><td>Telephone : </td><td><input type="text" placeholder="Telephone" id="telephone"required/></td></tr>
 
       </table>
     </fieldset>
  </form>
- 
-    
-       
-      
-      
-      
+
    <form>
   <fieldset>
      <legend>informations professionnelles :</legend>
      <table>
        
-    <tr class="couleur1"><td width="50%">Compagnie : </td><td width="50%"><input type="text" placeholder="Compagnie" id="compagnie" required/></td></tr>
+    <tr class="couleur1"><td>Compagnie : </td><td><input type="text" placeholder="Compagnie" id="compagnie" required/></td></tr>
      
-    <tr class="couleur2"><td width="50%">Poste : </td><td width="50%"><input type="text" placeholder="Poste" id="poste" required/><td><tr>
+    <tr class="couleur2"><td>Poste : </td><td><input type="text" placeholder="Poste" id="poste" required/><td><tr>
               </table>
     </fieldset>
 
-     
-     
-     
-     
-     
-       
+       <form>
+
   <fieldset>
      <legend>Boutons de mise à jour :</legend>
      <table>
     <tr>
     <td colspan="2">
-    <button onclick="();">Ajouter un nouveau contact</button>
-    <button onclick="enregisterModifications();">Enregistrer le contact</button>
-    <button onclick="effacerTout();">Effacer Tous les contacts</button>
-    <button onclick="();">Afficher</button>
-      <!--input type="submit" value="Subscribe" name="jetpack_subscriptions_widget"-->
+    <button onclick="f_ajouter();">Ajouter</button>
+    <button onclick="f_enregisterModifications();">Enregistrer les modifications</button>
+    <button onclick="f_afficher();">Rechercher</button>
+    <button onclick="f_effacerTout();">Supprimer</button>
       </tr>
              </table>
     </fieldset>
  </form>
      
   </div>
-      
-      
-      
-     <div id="space">
-       <br>
-     </div>
-      
-      
-      
+    
+     
       <div id="conteneurTableau">
-        <table>
+               <table>
     <thead>
       <tr>
         <th>Civilite</th>
@@ -110,6 +118,7 @@
   </table>
         </table>
       </div>
-    
+    </div>
+  
 </body>
 </html>

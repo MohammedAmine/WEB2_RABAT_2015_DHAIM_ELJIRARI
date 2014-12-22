@@ -34,7 +34,6 @@ function enregisterModifications() {
   champPoste.value="";
   
   // On rajoute le contact dans le tableau des contacts
-  // ????
   contacts = JSON.parse(localStorage.contacts);
   contacts.push(contact);
   
@@ -50,12 +49,12 @@ function init() {
  var contact = {};
   
   contact.civilite="Mr.";
-  contact.nom = "El Jirari";
-  contact.prenom="Mohammed Amine";
-  contact.email = "med.amineeljirari@gmail.com";
+  contact.nom = "nom 1";
+  contact.prenom="prenom 1";
+  contact.email = "email1@gmail.com";
   contact.telephone ="765-765-7654";
-  contact.compagnie = "EMSI";
-  contact.poste = "Ingénieur";
+  contact.compagnie = "compagnie1";
+  contact.poste = "poste1";
   
     contacts.push(contact);
 	localStorage.contacts = JSON.stringify(contacts);
@@ -75,6 +74,7 @@ function init() {
   if(localStorage.contacts) {
     contacts = JSON.parse(localStorage.contacts);
   }
+
   
   console.log("init effectué");
   
@@ -120,8 +120,8 @@ function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,emai
  
        
     // On met les cellules dans la ligne
-    ligne.appendChild(celCivilite);
-    ligne.appendChild(celNom);
+  ligne.appendChild(celCivilite);
+  ligne.appendChild(celNom);
 	ligne.appendChild(celPrenom);
 	ligne.appendChild(celPoste);
 	ligne.appendChild(celCompagnie);
