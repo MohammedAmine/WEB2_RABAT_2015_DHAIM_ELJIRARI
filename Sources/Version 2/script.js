@@ -36,9 +36,10 @@ function openDb() {
         store.createIndex('telephone', 'telephone', {unique: true});
 		console.log("Telephone OK");
 		console.log("Creation des index terminee avec succes");
+		
     };
 	
-	displayContactList(getObjectStore(DB_STORE_NAME, 'readonly'));
+	//displayContactList(store);
 }
 
 // fin open db
@@ -47,7 +48,7 @@ function openDb() {
 //get objectstore
 function getObjectStore(store_name, mode) {
 //
-store_name=getObjectStore(DB_STORE_NAME, 'readonly');
+//store_name=getObjectStore(DB_STORE_NAME, 'readonly');
 //
     var tx = db.transaction(store_name, mode);
     return tx.objectStore(store_name);
@@ -70,9 +71,7 @@ function clearObjectStore(store) {
 
 
 function displayContactList(store) {
-//
-store=getObjectStore(DB_STORE_NAME, 'readonly');
-//
+
     console.log("displayContactList");
     if (typeof store == 'undefined')
         store = getObjectStore(DB_STORE_NAME, 'readonly');
@@ -81,7 +80,7 @@ store=getObjectStore(DB_STORE_NAME, 'readonly');
     var pub_list = $('#contact-list');
     pub_list.empty();
     // voit cette fonction
-    newViewerFrame();
+    //newViewerFrame();
     var req;
     req = store.count();
     req.onsuccess = function(evt) {
@@ -240,12 +239,12 @@ function deleteContact(id) {
 
 
 function displayActionSuccess(msg) {
-    msg = typeof msg != 'undefined' ? "Succes: " + msg : "Succes";
+    msg = typeof msg != 'undefined' ? "Succes : " + msg : "Succes";
     $('#contact-msg').html('<span class="action-success">' + msg + '</span>');
 }
 
 function displayActionFailure(msg) {
-    msg = typeof msg != 'undefined' ? "Echec: " + msg : "Echec";
+    msg = typeof msg != 'undefined' ? "Echec : " + msg : "Echec";
     $('#contact-msg').html('<span class="action-failure">' + msg + '</span>');
 }
 

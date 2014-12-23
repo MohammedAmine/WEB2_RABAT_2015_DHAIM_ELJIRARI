@@ -11,7 +11,7 @@
 	<!--  -->
 	
 	<body onload="openDb();">
-	<form id="register-form" >
+	<form id="register-form" class="form">
 	
       <table>
 	  
@@ -20,12 +20,17 @@
 		      <!-- Pour la civilté -->
 			  <tr>
 				<td>
-				  <label for="civilite" class="required">
+				  <label for="civilite" >
 					Civilite : 
 				  </label>
 				</td>
 				<td>
-				  <input type="text" id="civilite" name="civilite" />
+				  <select>
+					<option>Mlle.</option>
+					<option>Mme.</option>
+					<option>Mr.</option>
+					<option>Dr.</option>
+				  </select>
 				</td>
 			  </tr>
 			  <!-- Fin la civilité -->
@@ -60,7 +65,7 @@
 			  <!-- Pour l'mail -->
 			  <tr>
 				<td>
-				  <label for="email" class="required">
+				  <label for="email" >
 					Email : 
 				  </label>
 				</td>
@@ -73,7 +78,7 @@
 			  <!-- Pour le telephone -->
 			  <tr>
 				<td>
-				  <label for="telephone" class="required">
+				  <label for="telephone" >
 					Telephone : 
 				  </label>
 				</td>
@@ -86,7 +91,7 @@
 			  <!-- Pour le poste -->
 			  <tr>
 				<td>
-				  <label for="poste" class="required">
+				  <label for="poste" ">
 					Poste : 
 				  </label>
 				</td>
@@ -99,7 +104,7 @@
 			  <!-- Pour la compagnie -->
 			  <tr>
 				<td>
-				  <label for="compagnie" class="required">
+				  <label for="compagnie" >
 					Compagnie : 
 				  </label>
 				</td>
@@ -115,8 +120,8 @@
 
 	  <!-- Les boutons -->
       <div class="button-pane">
-        <input type="button" id="add-button" value="Ajouter contact" onclick="addContact();"/>
-        <input type="reset" id="register-form-reset"  onclick="resetActionStatus();"/>
+        <input type="button" id="add-button" value="Ajouter contact" onclick="addContact();" class="button"/>
+        <input type="reset" id="register-form-reset"  onclick="resetActionStatus();" class="button"/>
       </div>
 	  <!-- Fin Les boutons -->
 	  
@@ -126,7 +131,7 @@
 	
 	<!-- Delete Form -->
 	
-	<form id="delete-form">
+	<form id="delete-form" class="form">
 	
 		  <table>
 				<tbody>
@@ -136,14 +141,14 @@
 					  
 						<td>
 						  <label for="key-to-delete">
-							ID :<br/>
-							<span class="note">(par exemple 1, 2, 3, etc.)</span>
+							Numero du contact a supprimer :<br/>
+							
 						  </label>
 						</td>
 						
 						<td>
-						  <input type="text" id="key-to-delete"
-								 name="key-to-delete" />
+						  <input type="text" id="key-to-delete" name="key-to-delete"/>
+						  <span class="note">(Exemple 1, 2, 3,...)</span>
 						</td>
 						
 					  </tr>
@@ -154,22 +159,45 @@
 		  
 		  <div class="button-pane">
 		  
-				<input type="button" id="delete-button" value="Supprimer contact" />
-				<input type="button" id="clear-store-button"
-					   value="Supprimer tous les contacts" class="destructive" />
+				<input type="button" id="delete-button" value="Supprimer contact" class="button" />
+				<input type="button" id="clear-store-button" value="Vider l'annuaire" class="destructive" />
 		  </div>
     </form>
-	
 	<!-- Fin Delete Form -->
+	
+	<!-- pour la recherche et l'affichage de tout les contacts -->
+	
+	<form id="search-form" class="form">
+	
+	
+      <div class="button-pane">
+	  
+				<input type="button" id="search-list-button" value="Lister annuaire" class="button" />
+      </div>
+	  
+    </form>
+	
+	<!-- pour la recherche et l'affichage de tout les contacts -->
+	
+	
 	
 	<!-- Liste des contacts et le message d'information -->
 	<div>
-		  
+	
+	
+	  
+	  <div id="contact-msg">
+      </div>
+	  
 	  <div id="contact-viewer">
       </div>
 	  
-      <ul id="contact-list">
+	  <ul id="contact-list">
       </ul>
+		  
+	  
+	  
+      
 	  
     </div>
 	<!-- Fin Liste des contacts et le message d'information -->
