@@ -1,0 +1,177 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
+<script src="script.js"></script> 
+<link rel="stylesheet" href="style.css"> 
+
+
+    <h1>Annuaire des contacts</h1>
+	<div id="contact-msg">
+    </div>
+	
+	<!-- Register Form -->
+	<!--  -->
+	
+	<body onload="openDb();">
+	<form id="register-form" >
+	
+      <table>
+	  
+        <tbody>
+		
+		      <!-- Pour la civilté -->
+			  <tr>
+				<td>
+				  <label for="civilite" class="required">
+					Civilite : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="civilite" name="civilite" />
+				</td>
+			  </tr>
+			  <!-- Fin la civilité -->
+			  
+			  
+		      <!-- Pour le Nom -->
+			  <tr>
+				<td>
+				  <label for="nom" class="required">
+					Nom : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="nom" name="nom" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour le Nom -->
+			  
+			  <!-- Pour le Prenom -->
+			  <tr>
+				<td>
+				  <label for="prenom" class="required">
+					Prenom : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="prenom" name="prenom" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour le Prenom -->
+			  
+			  <!-- Pour l'mail -->
+			  <tr>
+				<td>
+				  <label for="email" class="required">
+					Email : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="email" name="email" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour l'mail -->
+			  
+			  <!-- Pour le telephone -->
+			  <tr>
+				<td>
+				  <label for="telephone" class="required">
+					Telephone : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="telephone" name="telephone" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour le telephone -->
+			  
+			  <!-- Pour le poste -->
+			  <tr>
+				<td>
+				  <label for="poste" class="required">
+					Poste : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="poste" name="poste" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour le poste -->
+			  
+			  <!-- Pour la compagnie -->
+			  <tr>
+				<td>
+				  <label for="compagnie" class="required">
+					Compagnie : 
+				  </label>
+				</td>
+				<td>
+				  <input type="text" id="compagnie" name="compagnie" />
+				</td>
+			  </tr>
+			  <!-- Fin Pour la compagnie -->
+			  
+			</tbody>
+			
+      </table>
+
+	  <!-- Les boutons -->
+      <div class="button-pane">
+        <input type="button" id="add-button" value="Ajouter contact" onclick="addContact();"/>
+        <input type="reset" id="register-form-reset"  onclick="resetActionStatus();"/>
+      </div>
+	  <!-- Fin Les boutons -->
+	  
+    </form>
+	
+	<!-- Fin Register Form -->
+	
+	<!-- Delete Form -->
+	
+	<form id="delete-form">
+	
+		  <table>
+				<tbody>
+				  
+					  <!-- Pour ID a supprimer -->
+					  <tr>
+					  
+						<td>
+						  <label for="key-to-delete">
+							ID :<br/>
+							<span class="note">(par exemple 1, 2, 3, etc.)</span>
+						  </label>
+						</td>
+						
+						<td>
+						  <input type="text" id="key-to-delete"
+								 name="key-to-delete" />
+						</td>
+						
+					  </tr>
+					  <!-- Fin Pour ID a supprimer -->
+				</tbody>
+		  </table>
+		  
+		  
+		  <div class="button-pane">
+		  
+				<input type="button" id="delete-button" value="Supprimer contact" />
+				<input type="button" id="clear-store-button"
+					   value="Supprimer tous les contacts" class="destructive" />
+		  </div>
+    </form>
+	
+	<!-- Fin Delete Form -->
+	
+	<!-- Liste des contacts et le message d'information -->
+	<div>
+		  
+	  <div id="contact-viewer">
+      </div>
+	  
+      <ul id="contact-list">
+      </ul>
+	  
+    </div>
+	<!-- Fin Liste des contacts et le message d'information -->
+	
+	</body>

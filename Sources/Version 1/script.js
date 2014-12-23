@@ -3,14 +3,6 @@
 var champCivilite,champNom, champPrenom,champEmail,champTelephone,champCompagnie,champPoste;
 var contacts = [];
 
-
-
-
-
-
-
-
-
 function enregisterModifications() {
 
   console.log("sauvegarde du formulaire");
