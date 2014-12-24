@@ -39,7 +39,7 @@ function openDb() {
 		
     };
 	
-	//displayContactList(store);
+	displayContactList()
 }
 
 // fin open db
@@ -47,9 +47,7 @@ function openDb() {
 
 //get objectstore
 function getObjectStore(store_name, mode) {
-//
-//store_name=getObjectStore(DB_STORE_NAME, 'readonly');
-//
+
     var tx = db.transaction(store_name, mode);
     return tx.objectStore(store_name);
 }
@@ -70,21 +68,21 @@ function clearObjectStore(store) {
 
 
 
-function displayContactList(store) {
+function displayContactList() {
 
     console.log("displayContactList");
     if (typeof store == 'undefined')
         store = getObjectStore(DB_STORE_NAME, 'readonly');
-    var pub_msg = $('#contact-msg');
-    pub_msg.empty();
-    var pub_list = $('#contact-list');
-    pub_list.empty();
+    var contact_msg = $('#contact-msg');
+    contact_msg.empty();
+    var contact_list = $('#contact-list');
+    contact_list.empty();
     // voit cette fonction
     //newViewerFrame();
     var req;
     req = store.count();
     req.onsuccess = function(evt) {
-        pub_msg.append('<p>Vous avez <strong>' + evt.target.result +
+        contact_msg.append('<p>Vous avez <strong>' + evt.target.result +
                 '</strong> contacts dans votre annuaire.</p>');
     };
     req.onerror = function(evt) {
@@ -103,7 +101,7 @@ function displayContactList(store) {
                 var list_item = $('<li>' +
                         '[' + cursor.key + '] ' +
                         '(ID: ' + value.prenom + ') ' +
-                        value.nom +
+                        value.nom + ' ' +value.prenom +' ' + value.poste +' ' + value.compagnie + ' ' +value.telephone + ' ' +value.email +
                         '</li>');
                 //if (value.year != null)
                   //  list_item.append(' - ' + value.year);

@@ -15,7 +15,7 @@
 	<body onload="openDb();">
 	<!-- <form id="register-form" > -->
 	
-	<form class="contact_form">
+	<form id="register-form" class="contact_form">
       
 	  <ul>
 			<!-- Pour la civilté -->
@@ -40,9 +40,9 @@
 			  
 				  <label for="nom" class="required">Nom : </label>
 				
-				  <input type="text" id="nom" name="nom" placeholder="Buffa" />
+				  <input type="text" id="nom" name="nom" placeholder="Buffa" pattern="^[a-zA-Z][a-zA-Z]{1,20}$" required  />
 				  
-				  <span class="form_hint">Proper name format</span>
+				  <span class="form_hint">2 a 20 caracteres</span>
 			</li>
 				
 			  <!-- Fin Pour le Nom -->
@@ -50,11 +50,11 @@
 			  <!-- Pour le Prenom -->
 			  <li>
 			  
-				  <label for="prenom" class="required">Prenomm : </label>
+				  <label for="prenom" class="required">Prenom : </label>
 				
-				  <input type="text" id="prenom" name="prenom" placeholder="Michel" />
+				  <input type="text" id="prenom" name="prenom" placeholder="Michel" pattern="^[a-zA-Z][a-zA-Z]{1,20}$" required />
 				  
-				  <span class="form_hint">Proper prenom format</span>
+				  <span class="form_hint">2 a 20 caracteres</span>
 				  
 			</li>
 			  <!-- Fin Pour le Prenom -->
@@ -64,9 +64,9 @@
 			  
 				  <label for="email" class="required">Email : </label>
 				
-				  <input type="email" id="email" name="email" placeholder="michel.buffa@bufallo.com" />
+				  <input type="email" id="email" name="email" placeholder="michel.buffa@bufallo.com" required/>
 				  
-				  <span class="form_hint">Proper email format</span>
+				  <span class="form_hint">Exemple : exemple@exemple.com</span>
 				  
 			</li>
 			  <!-- Fin Pour l'mail -->
@@ -78,7 +78,7 @@
 				
 				  <input type="text" id="telephone" name="telephone" placeholder="111-111-1111" />
 				  
-				  <span class="form_hint">Proper telephone format</span>
+				  <span class="form_hint">Exemple : 111-111-1111</span>
 				  
 			 </li>
 			  <!-- Fin Pour le telephone -->
@@ -90,7 +90,7 @@
 				
 				  <input type="text" id="poste" name="poste" placeholder="Professeur"/>
 				  
-				  <span class="form_hint">Proper poste format</span>
+				  <span class="form_hint">0 à 25 lettres</span>
 				  
 			  </li>
 			  <!-- Fin Pour le poste -->
@@ -102,7 +102,7 @@
 				
 				  <input type="text" id="compagnie" name="compagnie" placeholder="Universite de Nice" />
 				  
-				  <span class="form_hint">Proper compagnie format</span>
+				  <span class="form_hint">0 à 25 lettres</span>
 				  
 			  </li>
 			  <!-- Fin Pour la compagnie -->
@@ -113,7 +113,7 @@
 			  </li>
 			  
 			  <li>
-					<input type="reset" id="register-form-reset"  onclick="resetActionStatus();"/>
+					<input type="reset" class="submit" id="register-form-reset"  onclick="resetActionStatus();"/>
 			  </li>
 			  <!-- Fin Les boutons -->
 			  
@@ -127,7 +127,7 @@
 	
 	<!-- Delete Form  tested to design-->
 	
-	<form id="contact-form" class="contact_form">	
+	<form id="delete-form" class="contact_form">	
 		
 				  <ul>
 					  
@@ -163,7 +163,7 @@
 	
       <ul>
 			<li>	  
-				<input type="button" id="search-list-button" value="Lister annuaire"  />
+				<input type="button" id="search-list-button" value="Lister annuaire" onclick="displayContactList();" />
 			</li>
       </ul>
 	  
