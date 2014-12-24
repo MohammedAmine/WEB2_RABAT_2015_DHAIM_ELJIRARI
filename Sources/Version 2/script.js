@@ -177,7 +177,7 @@ function addContact() {
 	
 	req.onsuccess = function(evt) {
         console.log("Insertion dans la BD effetctuee avec succes.");
-        displayActionSuccess("Contact ajoute");
+        //displayActionSuccess("Contact ajoute");
         //displayContactList(store);
     };
 	
@@ -239,13 +239,13 @@ function deleteContact(id) {
 
 
 function displayActionSuccess(msg) {
-    msg = typeof msg != 'undefined' ? "Succes : " + msg : "Succes";
-    $('#contact-msg').html('<span class="action-success">' + msg + '</span>');
+   // msg = typeof msg != 'undefined' ? "Succes : " + msg : "Succes";
+   // $('#contact-msg').html('<span class="action-success">' + msg + '</span>');
 }
 
 function displayActionFailure(msg) {
-    msg = typeof msg != 'undefined' ? "Echec : " + msg : "Echec";
-    $('#contact-msg').html('<span class="action-failure">' + msg + '</span>');
+   // msg = typeof msg != 'undefined' ? "Echec : " + msg : "Echec";
+   // $('#contact-msg').html('<span class="action-failure">' + msg + '</span>');
 }
 
 function resetActionStatus() {
