@@ -143,8 +143,8 @@ input:required, textarea:required {
     background: #fff url(images/red_asterisk.png) no-repeat 98% center;
 }
 
-
-.contact_form input:focus:invalid, .contact_form textarea:focus:invalid { /* when a field is considered invalid by the browser */
+/**/
+.contact_form input:invalid, .contact_form textarea:invalid { /* when a field is considered invalid by the browser */
 
     box-shadow: 0 0 5px #d45252;
     border-color: #b03535;

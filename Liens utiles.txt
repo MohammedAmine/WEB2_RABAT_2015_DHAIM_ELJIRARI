@@ -1,7 +1,8 @@
 
 IndexedDB :
 
-- https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+-Using IndexedDB : https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+-A Simple TODO list using HTML5 IndexedDB : http://www.html5rocks.com/en/tutorials/indexeddb/todo/#
 
 localStorage :
 
@@ -9,4 +10,6 @@ localStorage :
 
 HTML / CSS / JavaScript :
 
--
+-Consuming a RESTful Web Service with jQuery : http://spring.io/guides/gs/consuming-rest-jquery/
+-Cours JavaScript de Michel Buffa : http://mainline.essi.fr/JavaScriptSlides/index.html (pb avec le lien !)
+-Bring Your Forms Up to Date With CSS3 and HTML5 Validation : http://webdesign.tutsplus.com/tutorials/bring-your-forms-up-to-date-with-css3-and-html5-validation--webdesign-4738

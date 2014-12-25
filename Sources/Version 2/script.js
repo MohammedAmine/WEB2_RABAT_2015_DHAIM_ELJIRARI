@@ -3,7 +3,7 @@ const DB_VERSION = 1;
 const DB_STORE_NAME = 'contacts';
 var db;
 var req;
-
+var store;
 var current_view_contact_key;
 
 // openDb
@@ -19,7 +19,7 @@ function openDb() {
     };
     req.onupgradeneeded = function(evt) {
         console.log("Creation de l'objectStore");
-        var store = evt.currentTarget.result.createObjectStore(
+        store = evt.currentTarget.result.createObjectStore(
                 DB_STORE_NAME, {keyPath: 'id', autoIncrement: true});
 		console.log("Creation de l'objectStore terminee avec succes");
 		console.log("Creation des index");
@@ -39,7 +39,7 @@ function openDb() {
 		
     };
 	
-	displayContactList()
+	displayContactList();
 }
 
 // fin open db
@@ -47,22 +47,34 @@ function openDb() {
 
 //get objectstore
 function getObjectStore(store_name, mode) {
+var db;
+req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onsuccess = function(evt) {
+        db = this.result;
+        console.log("Base de donnees ouverte avec succes.");
+    };
+    req.onerror = function(evt) {
+        console.error("Erreur d'ouverture de la BD:", evt.target.errorCode);
+    };
 
     var tx = db.transaction(store_name, mode);
     return tx.objectStore(store_name);
 }
 
-//clear objectstore
-function clearObjectStore(store) {
-    var store = getObjectStore('contacts', 'readwrite');
+//clear objectstore/**/
+function clearObjectStore() {//store
+/**/
+console.log("clearObjectStore");
+store = getObjectStore(DB_STORE_NAME, 'readwrite');
+    //var store = getObjectStore('contacts', 'readwrite');
     var req = store.clear();
     req.onsuccess = function(evt) {
-        displayActionSuccess("Store efface avec succes.");
-        displayContactList(store);
+        //displayActionSuccess("Store efface avec succes.");
+        //displayContactList(store);
     };
     req.onerror = function(evt) {
-        console.error("Erreur de suppression objectStore:", evt.target.errorCode);
-        displayActionFailure(this.error);
+        //console.error("Erreur de suppression objectStore:", evt.target.errorCode);
+        //displayActionFailure(this.error);
     };
 }
 
@@ -168,7 +180,7 @@ function addContact() {
             return;
         }
 	console.log("Acquisition de l'objectStore");
-    var store = getObjectStore(DB_STORE_NAME, 'readwrite');
+    store = getObjectStore(DB_STORE_NAME, 'readwrite');
 	console.log("Acquisition de l'objectStore reussie");
     var req;
 	req = store.add(obj);
