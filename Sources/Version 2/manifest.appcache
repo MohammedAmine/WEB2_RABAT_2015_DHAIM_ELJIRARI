@@ -1,0 +1,20 @@
+CACHE MANIFEST
+
+CACHE:
+
+#pages
+/Formulaire.html
+
+
+#CSS
+/style.css
+
+#scripts
+/script.js
+https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
+
+
+FALLBACK:
+
+
+NETWORK:

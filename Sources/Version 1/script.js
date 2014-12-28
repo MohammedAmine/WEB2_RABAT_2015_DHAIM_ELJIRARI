@@ -3,11 +3,28 @@ var nom;
 var idRechercher;
 
 
+<<<<<<< HEAD
 function f_consult() {
 f_viderTableau();
 for(var i in localStorage)
 {
   var monitem=localStorage[i];
+=======
+var champCivilite,champNom, champPrenom,champEmail,champTelephone,champCompagnie,champPoste;
+var contacts = [];
+
+function enregisterModifications() {
+
+  console.log("sauvegarde du formulaire");
+  console.log("valeur de la civilite : " + champNom.value);
+  console.log("valeur du nom : " + champNom.value);
+  console.log("valeur du prenom : " + champNom.value);
+  console.log("valeur du email : " + champNom.value);
+  console.log("valeur du telephone : " + champNom.value);
+  console.log("valeur du compagnie : " + champNom.value);
+  console.log("valeur du poste : " + champNom.value);
+  
+>>>>>>> FETCH_HEAD
   var contact = {};
 
   contact.civilite=JSON.parse(monitem).civilite;

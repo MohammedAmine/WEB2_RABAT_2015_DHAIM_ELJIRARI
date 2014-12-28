@@ -1,0 +1,195 @@
+<html manifest="myCache.appcache">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
+<script src="script2.js"></script> 
+<link rel="stylesheet" href="style.css"> 
+
+
+    <h1>Annuaire des contacts</h1>
+	<div id="contact-msg">
+    </div>
+	
+	<!-- Register Form -->
+	<!--  -->
+	
+	<body >
+	<!-- <form id="register-form" > -->
+	
+	<form id="register-form" class="contact_form">
+      
+	  <ul>
+			<!-- Pour la civilté -->
+			<li>
+		
+				  <label for="civilite" >Civilite : </label>
+				
+				  <select class="input">
+					<option>Mlle.</option>
+					<option>Mme.</option>
+					<option>Mr.</option>
+					<option>Dr.</option>
+				  </select>
+				  
+			
+			</li>
+			<!-- Fin la civilité -->
+			  
+			  
+		    <!-- Pour le Nom -->
+			<li>
+			  
+				  <label for="nom" class="required">Nom : </label>
+				
+				  <input type="text" id="nom" name="nom" placeholder="Buffa" pattern="^[a-zA-Z][a-zA-Z]{1,20}$" required  />
+				  
+				  <span class="form_hint">2 a 20 caracteres</span>
+			</li>
+				
+			  <!-- Fin Pour le Nom -->
+			  
+			  <!-- Pour le Prenom -->
+			  <li>
+			  
+				  <label for="prenom" class="required">Prenom : </label>
+				
+				  <input type="text" id="prenom" name="prenom" placeholder="Michel" pattern="^[a-zA-Z][a-zA-Z]{1,20}$" required />
+				  
+				  <span class="form_hint">2 a 20 caracteres</span>
+				  
+			</li>
+			  <!-- Fin Pour le Prenom -->
+			  
+			  <!-- Pour l'mail -->
+			  <li>
+			  
+				  <label for="email" class="required">Email : </label>
+				
+				  <input type="email" id="email" name="email" placeholder="michel.buffa@bufallo.com" required/>
+				  
+				  <span class="form_hint">Exemple : exemple@exemple.com</span>
+				  
+			</li>
+			  <!-- Fin Pour l'mail -->
+			  
+			  <!-- Pour le telephone -->
+			  <li>
+			  
+				  <label for="telephone" class="required">Telephone : </label>
+				
+				  <input type="text" id="telephone" name="telephone" placeholder="111-111-1111" />
+				  
+				  <span class="form_hint">Exemple : 111-111-1111</span>
+				  
+			 </li>
+			  <!-- Fin Pour le telephone -->
+			  
+			  <!-- Pour le poste -->
+			  <li>
+			  
+				  <label for="poste" class="required">Poste : </label>
+				
+				  <input type="text" id="poste" name="poste" placeholder="Professeur"/>
+				  
+				  <span class="form_hint">0 à 25 lettres</span>
+				  
+			  </li>
+			  <!-- Fin Pour le poste -->
+			  
+			  <!-- Pour la compagnie -->
+			  <li>
+			  
+				  <label for="compagnie" class="required">Compagnie : </label>
+				
+				  <input type="text" id="compagnie" name="compagnie" placeholder="Universite de Nice" />
+				  
+				  <span class="form_hint">0 à 25 lettres</span>
+				  
+			  </li>
+			  <!-- Fin Pour la compagnie -->
+			  
+			   <!-- Les boutons -->
+			  <li>
+			       					
+					<button class="submit" type="submit" onclick="contacts.indexedDB.addContact();" > Ajouter contact </button>
+			  </li>
+			  
+			  
+			  <!-- Fin Les boutons -->
+			  
+		</ul>
+
+	  
+	  
+    </form>
+	
+	<!-- Fin Register Form -->
+	
+	<!-- Delete Form  tested to design-->
+	
+	<form id="delete-form" class="contact_form">	
+		
+				  <ul>
+					  
+					  <li> 	
+					  
+						  <label for="key-to-delete">Numero contact :<br/></label>	  
+						  						  
+						  <input type="text" id="key-to-delete" name="key-to-delete" placeholder="1,2,3..."/>
+						  
+						  <span class="form_hint">(Exemple 1, 2, 3,...)</span>
+						  
+						  <button class="submit" type="submit" onclick="contacts.indexedDB.deletecontact();">Supprimer contact </button>
+						  
+					  </li>
+					  
+				      <li>			
+					  
+						  <input type="button" id="clear-store-button" value="Vider l'annuaire" action="clearObjectStore();" />
+						  					
+					  </li>
+			
+		          </ul>		 
+		  
+    </form>
+	<!-- Fin Delete Form tested to design-->
+	
+	
+	
+	<!-- pour la recherche et l'affichage de tout les contacts -->
+	
+	<form id="search-form" class="contact_form">
+	
+	
+      <ul>
+			<li>	  
+				<input type="button" id="search-list-button" value="Lister annuaire" onclick="contacts.indexedDB.getAllcontactItems();" />
+			</li>
+      </ul>
+	  
+    </form>
+	
+	<!-- Fin pour la recherche et l'affichage de tout les contacts -->
+	
+	
+	
+	<!-- Liste des contacts et le message d'information -->
+	<div>
+	
+	  <div id="contact-msg">
+      </div>
+	  
+	  <!--
+	  <ul id="contact-list">
+      </ul>	  
+	  -->
+	 
+				  
+	   <div id="contact-list">	
+	      			  
+	   </div>
+    </div>
+	<!-- Fin Liste des contacts et le message d'information -->
+	
+
+	
+</html>

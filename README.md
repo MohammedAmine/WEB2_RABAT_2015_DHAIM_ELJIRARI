@@ -14,7 +14,7 @@ Les versions du projet sont donc :
 
 -Version 1 : mode offline + LocalStorage pour la persistence
 -Version 2 : mode offline + IndexedDB pour la persistence
--Version 3 : accès au données yn via Web Service
+-Version 3 : accès au données via Web Service
 
 Le contenu des dossiers et le suivant :
 
