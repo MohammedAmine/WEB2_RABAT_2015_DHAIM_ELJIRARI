@@ -1,20 +1,28 @@
 
-// init
+// init -- OK
 function init() {
-  contactsDb.indexedDB.open(); // open displays the data previously saved
+  console.log("Ouverture BD...");
+  contacts.indexedDB.open(); // open displays the data previously saved
+  console.log("Ouverture BD...OK");
+  
+  
 }
 
-//A function that takes the data out of the DOM is needed so, call the contactsDb.indexedDB.addcontact method
+
+
+//A function that takes the data out of the DOM is needed so, call the contacts.indexedDB.addcontact method
 window.addEventListener("DOMContentLoaded", init, false);
 
 //namespace to encapsulate the database logic
-var contactsDb = {};
-contactsDb.indexedDB = {};
+var contacts = {};
+contacts.indexedDB = {};
 
 //Opening the database
-contactsDb.indexedDB.db = null;
+contacts.indexedDB.db = null;
 
-contactsDb.indexedDB.open = function() {
+
+//opening IDB -- 
+contacts.indexedDB.open = function() {
   var version = 1;
   var request = indexedDB.open("contacts", version);
 
@@ -23,12 +31,12 @@ contactsDb.indexedDB.open = function() {
     var db = e.target.result;
 
     // A versionchange transaction is started automatically.
-    e.target.transaction.onerror = contactsDb.indexedDB.onerror;
+    e.target.transaction.onerror = contacts.indexedDB.onerror;
 
 	// Objectstore is recreated after each execution
-    if(db.objectStoreNames.contains("contact")) {
-      db.deleteObjectStore("contact");
-    }
+    //if(db.objectStoreNames.contains("contact")) {
+   //   db.deleteObjectStore("contact");
+   // }
 
     var store = db.createObjectStore("contact", {keyPath: 'id', autoIncrement: true});
 		console.log("Creation de l'objectStore terminee avec succes");
@@ -53,21 +61,21 @@ contactsDb.indexedDB.open = function() {
   };
 
   request.onsuccess = function(e) {
-    contactsDb.indexedDB.db = e.target.result;
-    contactsDb.indexedDB.getAllcontactItems();
+    contacts.indexedDB.db = e.target.result;
+    contacts.indexedDB.getAllcontactItems();
   };
 
-  request.onerror = contactsDb.indexedDB.onerror;
+  request.onerror = contacts.indexedDB.onerror;
 };
 //
 //
 //
 //
 //
-//Adding data to an object store
-contactsDb.indexedDB.addcontact = function(contactText) {
+//Adding data to an object store -- OK
+contacts.indexedDB.addThecontact = function(nom,prenom,email,telephone,poste,compagnie) {
 
-//
+/*
 		var nom = $('#nom').val();
         var prenom = $('#prenom').val();
 		
@@ -76,10 +84,11 @@ contactsDb.indexedDB.addcontact = function(contactText) {
 		
         var poste = $('#poste').val();
         var compagnie = $('#compagnie').val();
-//
-  var db = contactsDb.indexedDB.db;
+*/
+  var db = contacts.indexedDB.db;
   var trans = db.transaction(["contact"], "readwrite");
   var store = trans.objectStore("contact");
+  console.log("Enregistrement du contact...");
   var request = store.put({
     "nom": nom,
 	"prenom":prenom,
@@ -88,82 +97,142 @@ contactsDb.indexedDB.addcontact = function(contactText) {
 	"poste":poste,
 	"compagnie":compagnie
   });
+  
 
   trans.oncomplete = function(e) {
     // Re-render all the contact's
-    contactsDb.indexedDB.getAllcontactItems();
+ console.log("Enregistrement du contact...OK");
+    contacts.indexedDB.getAllcontactItems();
   };
 
   request.onerror = function(e) {
-    console.log(e.value);
+     console.log("Enregistrement du contact...ERREUR");
   };
 };
 //
 //
+//A function that takes the data out of the DOM is needed -- OK
 //
 //
-//
-//Querying the data in a store
-contactsDb.indexedDB.getAllcontactItems = function() {
-  var contact_list = $('#contact-list');
-    contact_list.empty();
-
-  var db = contactsDb.indexedDB.db;
-  var trans = db.transaction(["contact"], "readwrite");
-  var store = trans.objectStore("contact");
-
-  // Get everything in the store;
-  var keyRange = IDBKeyRange.lowerBound(0);
-  var cursorRequest = store.openCursor(keyRange);
-
-  cursorRequest.onsuccess = function(e) {
-    var result = e.target.result;
-    if(!!result == false)
-      return;
-
-    rendercontact(result.value);
-    result.continue();
-  };
-
-  cursorRequest.onerror = contactsDb.indexedDB.onerror;
-};
-//
-//
-//
-//
-//
-//Rendering data from an Object Store
-function rendercontact(row) {
-  var contacts = document.getElementById("contactItems");
-  var li = document.createElement("li");
-  var a = document.createElement("a");
-  var t = document.createTextNode();
-  t.data = row.text;
-
-  a.addEventListener("click", function(e) {
-    contactsDb.indexedDB.deletecontact(row.text);
-  });
-
-  a.textContent = " [Delete]";
-  li.appendChild(t);
-  li.appendChild(a);
-  contacts.appendChild(li);
+function addContact() {
+console.log("Ajout du contact...");
+//create contact object
+  var nom = document.getElementById('nom');
+  var prenom = document.getElementById('prenom');
+  
+  var email = document.getElementById('email');
+  var telephone = document.getElementById('telephone');
+  
+  var poste = document.getElementById('poste');
+  var compagnie = document.getElementById('compagnie');
+   
+  //add data to contact
+  contacts.indexedDB.addThecontact(nom.value,prenom.value,email.value,telephone.value,poste.value,compagnie.value);
+  nom.value = '';
+  prenom.value = '';
+  email.value = '';
+  telephone.value = '';
+  poste.value = '';
+  compagnie.value = '';
 }
 //
 //
 //
 //
 //
-//Deleting data from a table
-contactsDb.indexedDB.deletecontact = function(id) {
-  var db = contactsDb.indexedDB.db;
+//Querying the data in a store -- OK
+contacts.indexedDB.getAllcontactItems = function() {
+console.log("Acces aux contacts...");
+
+  var db = contacts.indexedDB.db;
+  var trans = db.transaction(["contact"], "readwrite");
+  var store = trans.objectStore("contact");
+  
+console.log("Acces aux contacts...OK");
+
+  // Get everything in the store;
+  var keyRange = IDBKeyRange.lowerBound(0);
+  console.log("Chargement curseur...");
+  var cursorRequest = store.openCursor(keyRange);
+
+  cursorRequest.onsuccess = function(e) {
+    var cursor = e.target.result;
+	
+	
+    if(cursor) {
+	console.log("Chargement curseur...OK");
+	
+			cursorRequest = store.get(cursor.key);
+			
+					cursorRequest.onsuccess = function(evt) {
+					var value = evt.target.result;
+					console.log("Contact "+cursor.key+" chargé");
+					rendercontact(cursor.key,value.nom,value.prenom,value.poste,value.compagnie,value.email,value.telephone);
+                   return;
+					};
+			
+	cursor.continue();		
+  };
+  
+ 
+
+  cursorRequest.onerror = contacts.indexedDB.onerror;
+};
+
+console.log("Chargement des contacts...OK");
+}
+//
+//
+//
+//
+//
+//Rendering data from an Object Store - POK
+function rendercontact(key,nom,prenom,poste,compagnie,email,telephone) {
+
+
+  var contact_list = $('#contact-list');
+    contact_list.empty();
+
+	
+  var list_contact = $(
+  
+  
+					
+							'<li>' + 
+							'Contact numero : '+key +' : '
+							+nom+ ' '+
+							prenom+ ' , '+
+							poste+
+							compagnie+ ' joignable at : '+
+							email+ ' ou au :'
+							+telephone+'</li>'
+					
+					);
+					
+
+					
+						
+contact_list.append(list_contact);
+
+ 
+}
+//
+//
+//
+//
+//
+//Deleting data from a table -- OK
+contacts.indexedDB.deletecontact = function() {
+
+var id =document.getElementById('key-to-delete');
+  var db = contacts.indexedDB.db;
   var trans = db.transaction(["contact"], "readwrite");
   var store = trans.objectStore("contact");
 
-  var request = store.delete(id);
+  var request = store.delete(id.value);
 
   trans.oncomplete = function(e) {
-    contactsDb.indexedDB.getAllcontactItems();  // Refresh the screen
+    contacts.indexedDB.getAllcontactItems();  // Refresh the screen
   };
 
   request.onerror = function(e) {

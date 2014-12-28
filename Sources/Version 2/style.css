@@ -144,11 +144,11 @@ input:required, textarea:required {
 }
 
 /**/
-.contact_form input:invalid, .contact_form textarea:invalid { /* when a field is considered invalid by the browser */
+.contact_form input:invalid:focus, .contact_form textarea:invalid :focus{ /* when a field is considered invalid by the browser */
 
     box-shadow: 0 0 5px #d45252;
     border-color: #b03535;
-	background: #fff url(images/invalid.png) no-repeat 98% center;
+	background: #fff url(images/invalid.png) no-repeat 10% center;
 }
 
 .contact_form input:required:valid, .contact_form textarea:required:valid { /* when a field is considered valid by the browser */
@@ -179,3 +179,21 @@ input:required, textarea:required {
 .contact_form input:focus + .form_hint {display: inline;}
 .contact_form input:required:valid + .form_hint {background: #28921f;} /* change form hint color when valid */
 .contact_form input:required:valid + .form_hint::before {color:#28921f;} /* change form hint arrow color when valid */
+
+
+
+table, td {
+    border: 1px solid green;
+	width:750px;
+	
+}
+
+th {
+border: 1px solid green;
+        font-size: 1.em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #68b12f;
+    color: #FFF;
+}
