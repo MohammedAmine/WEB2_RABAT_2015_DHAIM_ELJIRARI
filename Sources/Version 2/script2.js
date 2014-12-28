@@ -240,3 +240,13 @@ var id =document.getElementById('key-to-delete');
   };
 };
 
+
+function clearObjectStore(){
+
+
+  var db = contacts.indexedDB.db;
+  var trans = db.transaction(["contact"], "readwrite");
+  var store = trans.objectStore("contact");
+  
+  
+}
