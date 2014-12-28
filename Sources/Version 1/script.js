@@ -1,102 +1,25 @@
+var id=1;
+var nom;
+var idRechercher;
 
 
-var champCivilite,champNom, champPrenom,champEmail,champTelephone,champCompagnie,champPoste;
-var contacts = [];
-
-
-
-
-
-
-
-
-
-function enregisterModifications() {
-
-  console.log("sauvegarde du formulaire");
-  console.log("valeur de la civilite : " + champNom.value);
-  console.log("valeur du nom : " + champNom.value);
-  console.log("valeur du prenom : " + champNom.value);
-  console.log("valeur du email : " + champNom.value);
-  console.log("valeur du telephone : " + champNom.value);
-  console.log("valeur du compagnie : " + champNom.value);
-  console.log("valeur du poste : " + champNom.value);
-  
+function f_consult() {
+f_viderTableau();
+for(var i in localStorage)
+{
+  var monitem=localStorage[i];
   var contact = {};
-    
-  contact.civilite=champCivilite.value
-  contact.nom = champNom.value;
-  contact.prenom=champPrenom.value
-  contact.email = champEmail.value;
-  contact.telephone = champTelephone.value;
-  contact.compagnie = champCompagnie.value;
-  contact.poste = champPoste.value;
+
+  contact.civilite=JSON.parse(monitem).civilite;
+  contact.nom =JSON.parse(monitem).nom;
+  contact.prenom=JSON.parse(monitem).prenom;
+  contact.email =JSON.parse(monitem).email;
+  contact.telephone =JSON.parse(monitem).telephone;
+  contact.compagnie = JSON.parse(monitem).compagnie;
+  contact.poste =JSON.parse(monitem).poste;
   
-  champCivilite.value="";
-  champNom.value="";
-  champPrenom.value="";
-  champEmail.value="";
-  champTelephone.value="";
-  champCompagnie.value="";
-  champPoste.value="";
-  
-  // On rajoute le contact dans le tableau des contacts
-  contacts = JSON.parse(localStorage.contacts);
-  contacts.push(contact);
-  
-  // On sauvegarde au format JSON
-  localStorage.contacts = JSON.stringify(contacts);
-  
-  ajouteLigneAuTableau(contact.civilite, contact.nom, contact.prenom,contact.email,contact.telephone, contact.compagnie, contact.poste);
-    }
-	
-
-
-
-
-
-
-
-
-
-function init() {
-
-//test
- var contact = {};
-  
-  contact.civilite="Mr.";
-  contact.nom = "nom 1";
-  contact.prenom="prenom 1";
-  contact.email = "email1@gmail.com";
-  contact.telephone ="765-765-7654";
-  contact.compagnie = "compagnie1";
-  contact.poste = "poste1";
-  
-    contacts.push(contact);
-	localStorage.contacts = JSON.stringify(contacts);
-	ajouteLigneAuTableau(contact.civilite, contact.nom, contact.prenom,contact.email,contact.telephone, contact.compagnie, contact.poste);
-  
-  //fin test
-
-  champCivilite = document.querySelector("#civilite");
-  champNom = document.querySelector("#nom");
-  champPrenom = document.querySelector("#prenom");
-  champEmail=document.querySelector("#email");
-  champTelephone=document.querySelector("#telephone");
-  champCompagnie=document.querySelector("#compagnie");
-  champPoste=document.querySelector("#poste");
-  
-  console.log("On regarde s'il y'a des contacts dans le localStorage");
-  if(localStorage.contacts) {
-    contacts = JSON.parse(localStorage.contacts);
-  }
-
-  
-  console.log("init effectué");
-  
-  console.log("liste des contacts :");
-  afficheContacts();
-
+  f_ajouteLigneAuTableau(contact.civilite, contact.nom, contact.prenom,contact.email,contact.telephone, contact.compagnie, contact.poste);
+}
 }
 
 
@@ -104,24 +27,17 @@ function init() {
 
 
 
+function f_getMaxId()
+{
+	id=JSON.parse(localStorage[localStorage.length]).identifiant;
 
-
-function afficheContacts() {
-    for(var i = 0; i < contacts.length; i++) {
-    console.log("Informations du contact : " +contacts[i].civilite + contacts[i].nom + contacts[i].prenom + contacts[i].poste + " chez " + contacts[i].compagnie + " joignable au " + contacts[i].telephone + "ou à " + contacts[i].email);
-    
-      ajouteLigneAuTableau(contacts[i].civilite, contacts[i].nom, contacts[i].prenom, contacts[i].poste, contacts[i].compagnie, contacts[i].telephone, contacts[i].email );
-
-  }
-}
+}	
 
 
 
 
 
-
-
-function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,email) {
+function f_ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,email) {
       // on cree une ligne
     var ligne = document.createElement("tr");
     
@@ -149,8 +65,8 @@ function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,emai
  
        
     // On met les cellules dans la ligne
-  ligne.appendChild(celCivilite);
-  ligne.appendChild(celNom);
+  	ligne.appendChild(celCivilite);
+  	ligne.appendChild(celNom);
 	ligne.appendChild(celPrenom);
 	ligne.appendChild(celPoste);
 	ligne.appendChild(celCompagnie);
@@ -158,7 +74,7 @@ function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,emai
 	ligne.appendChild(celEmail);
     
     // on ajoute la ligne au tbody
-       document.querySelector("#LeTbody").appendChild(ligne);
+     document.querySelector("#LeTbody").appendChild(ligne);
 }
 
 
@@ -168,8 +84,104 @@ function ajouteLigneAuTableau(civilite,nom,prenom,poste,compagnie,telephone,emai
 
 
 
+function f_ajouter()
+{
+	
+	if (localStorage.length==0)
+	{
+	id=1;
+	f_inserer();
+	}
+	else 
+	{
+	f_getMaxId();
+	id++;
+	f_inserer();
+	}
+	
+}
 
-function effacerTout() {
+
+function f_inserer()
+{
+	contact={};
+	contact.identifiant=id;
+    var selectElmt = document.getElementById("civilite");
+	var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
+  	contact.civilite=selectElmt.options[selectElmt.selectedIndex].text;
+  	
+  	//nom,prenom,email,telephone,compagnie
+    contact.nom = document.getElementById("nom").value;
+  	contact.prenom=document.getElementById("prenom").value;
+  	contact.email = document.getElementById("email").value;
+  	contact.telephone = document.getElementById("telephone").value;
+  	contact.compagnie = document.getElementById("compagnie").value;
+  	contact.poste = document.getElementById("poste").value;
+  
+  	//Ajout du contact dans le local storage
+    localStorage.setItem(id.toString(),JSON.stringify(contact));
+    id++;
+}
+
+
+
+function f_viderTableau()
+{
+	document.querySelector("#LeTbody").innerHTML="";
+}
+
+
+function f_effacerTout() {
   localStorage.clear();
-  document.querySelector("#LeTbody").innerHTML="";
+  f_viderTableau();
+}
+
+
+
+function f_rechercher()
+{
+for(var i in localStorage)
+{
+	var monitem=localStorage[i];
+	if (JSON.parse(monitem).nom==document.getElementById("nom").value)
+	{
+ 		console.log(document.getElementById("nom").value);
+ 		//document.form1.T_nom.value=JSON.parse(monitem).nom;
+ 		document.form1.T_prenom.value=JSON.parse(monitem).prenom;
+ 		document.form1.T_email.value=JSON.parse(monitem).email;
+ 		document.form1.T_telephone.value=JSON.parse(monitem).telephone;
+ 		document.form1.T_compagnie.value=JSON.parse(monitem).compagnie;
+ 		document.form1.T_post.value=JSON.parse(monitem).poste;
+ 		idRechercher=JSON.parse(monitem).identifiant;
+	} 
+	else {alert("aucun contact avec ce nom");}
+}}
+
+
+
+function f_enregisterModifications() 
+{
+	contact={};
+	contact.identifiant=idRechercher;
+    var selectElmt = document.getElementById("civilite");
+	var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
+  	contact.civilite=selectElmt.options[selectElmt.selectedIndex].text;
+  	
+  	//nom,prenom,email,telephone,compagnie
+    contact.nom = document.getElementById("nom").value;
+  	contact.prenom=document.getElementById("prenom").value;
+  	contact.email = document.getElementById("email").value;
+  	contact.telephone = document.getElementById("telephone").value;
+  	contact.compagnie = document.getElementById("compagnie").value;
+  	contact.poste = document.getElementById("poste").value;
+  
+  	//Ajout du contact dans le local storage
+    localStorage.setItem(id.toString(),JSON.stringify(contact));
+    
+}
+    
+    
+function f_supprimer() 
+{
+localStorage.removeItem(idRechercher);
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" manifest="myCache.appcache">
 
 <head>
   <meta charset="utf-8">
@@ -21,7 +21,7 @@ var statusElem  = document.getElementById('status');
 function online(event) {
   statusElem.className = navigator.onLine ? 'online' : 'offline';
   statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
-  state.innerHTML += '<li>New event: ' + event.type + '</li>';
+  //state.innerHTML += '<li>New event: ' + event.type + '</li>';
 }
 
 window.addEventListener('online', online);
@@ -36,13 +36,13 @@ online();
 <div id="page">
   <div id="conteneurForm">
  
-  <form>
+  <form NAME="form1">
   <fieldset>
     <legend>informations personnelles :</legend>
      <table>
     <tr class="couleur2"><td width="50%">Civilite : </td>
       <td width="50%">
-        <select class="select" id="select">
+        <select class="select" id="civilite">
         <option>Mr</option>
         <option>Mme</option>
         <option>Mlle</option>
@@ -51,48 +51,45 @@ online();
       </td>
       </tr>
   
-    <tr class="couleur1"><td >Nom : </td><td><input type="text" placeholder="Nom" id="nom" required/></td></tr>
+    <tr class="couleur1"><td width="50%">Nom : </td><td width="50%"><input NAME="T_nom" type="text" placeholder="Nom" id="nom"; required/></td></tr>
       
-    <tr class="couleur2"><td >Prenom : </td><td><input type="text" placeholder="Prenom" id="prenom" required/></td></tr>
+    <tr class="couleur2"><td width="50%">Prenom : </td><td width="50%"><input NAME="T_prenom" type="text" placeholder="Prenom" id="prenom" required/></td></tr>
  </table>
-     </form>
   </fieldset>
-    
-    <form>
+   
   <fieldset>
      <legend>Contact :</legend>
      <table>
-    <tr class="couleur1"><td>E-mail : </td><td><input type="email" placeholder="Example@example.com" id="email" required/></td</tr>
+    <tr class="couleur1"><td width="50%">E-mail : </td><td width="50%"><input NAME="T_email" type="email" placeholder="Example@example.com" id="email" required/></td</tr>
         
-    <tr class="couleur2"><td>Telephone : </td><td><input type="text" placeholder="Telephone" id="telephone"required/></td></tr>
+    <tr class="couleur2"><td width="50%">Telephone : </td><td width="50%"><input NAME="T_telephone" type="text" placeholder="Telephone" id="telephone"required/></td></tr>
 
       </table>
     </fieldset>
- </form>
 
-   <form>
   <fieldset>
      <legend>informations professionnelles :</legend>
      <table>
        
-    <tr class="couleur1"><td>Compagnie : </td><td><input type="text" placeholder="Compagnie" id="compagnie" required/></td></tr>
+    <tr class="couleur1"><td width="50%">Compagnie : </td><td width="50%"><input NAME="T_compagnie" type="text" placeholder="Compagnie" id="compagnie" required/></td></tr>
      
-    <tr class="couleur2"><td>Poste : </td><td><input type="text" placeholder="Poste" id="poste" required/></td></tr>
+    <tr class="couleur2"><td width="50%">Poste : </td><td width="50%"><input NAME="T_post" type="text" placeholder="Poste" id="poste" required/></td></tr>
               </table>
     </fieldset>
 
-       <form>
+      
 
   <fieldset>
      <legend>Boutons de mise à jour :</legend>
      <table>
     <tr>
     <td colspan="2">
-    <button onclick="init();">Consulter</button>
+    <button onclick="f_consult();">Consulter</button>
     <button onclick="f_ajouter();">Ajouter</button>
     <button onclick="f_enregisterModifications();">Enregistrer les modifications</button>
-    <button onclick="f_afficher();">Rechercher</button>
-    <button onclick="f_effacerTout();">Supprimer</button>
+    <button onclick="f_rechercher();">Rechercher</button>
+    <button onclick="f_effacerTout();">Supprimer tout</button>
+    <button onclick="f_supprimer();">Supprimer</button>
       </tr>
              </table>
     </fieldset>
@@ -105,13 +102,13 @@ online();
                <table>
     <thead>
       <tr>
-        <th>Civilite</th>
-        <th>Nom</th>
-		<th>Prenom</th>
-        <th>Poste</th>
-		<th>Compagnie</th>
-        <th>E-mail</th>
-		<th>Telephone</th>
+        <th width="5%">Civilite</th>
+        <th width="20%">Nom</th>
+		<th width="20%">Prenom</th>
+        <th width="20%">Poste</th>
+		<th width="20%">Compagnie</th>
+        <th width="20%">E-mail</th>
+		<th width="20%">Telephone</th>
       </tr>
     </thead>
     <tbody id="LeTbody">
